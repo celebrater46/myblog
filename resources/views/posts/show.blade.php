@@ -1,4 +1,4 @@
-@extends("layouts.default") {{-- layouts フォルダの default --}}
+@extends("layouts.default")
 
 @section("title", $post->title)
 
@@ -7,7 +7,6 @@
     <a href="{{ url("/") }}" class="header-menu">Back</a>
     {{ $post->title }}
   </h1>
-  {{-- 記事は改行コードを改行タグに変換するので{{}}エスケープはせず、{!! nl2br(e($post->body)) !!} とする。!! はエスケープしないという意味、e で文章はエスケープさせ、nl2br で改行コードを改行タグに変換する --}}
   <p>{!! nl2br(e($post->body)) !!}</p>
 
   <h2>コメントやで</h2>
@@ -23,9 +22,8 @@
     </li>
     @empty
       <li>ノーコメントやで！！</li>
-    @endforelse 
+    @endforelse
   </ul>
-  {{-- ↓ コメントコントローラーのアクションに対して $post を紐付けた形で送信 --}}
   <form method="post" action="{{ action("CommentController@store", $post) }}">
     {{ csrf_field() }}
     <p>

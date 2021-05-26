@@ -11,6 +11,5 @@ class Comment extends Model
 
     // $comment->post
     public function post() {
-        return $this->belongsTo("App\Post"); // こちらのコメントは post に対して紐付いていますよ
     }
 }

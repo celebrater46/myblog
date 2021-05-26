@@ -15,11 +15,9 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            // $table->integer("post_id"); // Post に対する紐付け
-            $table->unsignedInteger("post_id"); // 正の整数限定
-            $table->string("body"); // 一行コメントなので string。長文なら text
+            $table->unsignedInteger("post_id");
+            $table->string("body");
             $table->timestamps();
-            // ↓ post_id を posts テーブルの id に紐付ける外部キー制約。かつ関連するコメントの削除設定
             $table
                 ->foreign("post_id")
                 ->references("id")

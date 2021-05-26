@@ -1,4 +1,4 @@
-@extends("layouts.default") {{-- layouts フォルダの default --}}
+@extends("layouts.default")
 
 @section("title", "Edit Post")
 
@@ -9,10 +9,8 @@
   </h1>
 <form method="post" action="{{ url("/posts", $post->id) }}">
   {{ csrf_field() }}
-  {{-- ↓ ルーティングのパッチメソッド --}}
   {{ method_field("patch") }}
   <p>
-    {{-- タイトルがなかったら post の title を表示してね --}}
     <input type="text" name="title" placeholder="タイトルを入力するやで！！" value="{{ old("title", $post->title) }}">
     @if ($errors->has("title"))
     <span class="error">{{ $errors->first("title") }}</span>
